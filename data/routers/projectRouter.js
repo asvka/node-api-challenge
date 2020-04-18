@@ -12,6 +12,15 @@ router.get('/', async (req, res, next) => {
         next(err)
     }
 })
+router.get('/:id', async (req, res, next) => {
+    try {
+        const data = await db.getProjectActions(req.params.id)
+        res.status(200).json(data)
+    }
+    catch (err) {
+        next(err)
+    }
+})
 
 //POST
 router.post('/', async (req, res, next) => {
